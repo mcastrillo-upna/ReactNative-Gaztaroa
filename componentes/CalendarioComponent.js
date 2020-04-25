@@ -11,28 +11,28 @@ class Calendario extends Component {
         };
     }
 
-    render(){
+    render() {
         const { navigate } = this.props.navigation;
 
-        const renderCalendarioItem = ({item, index}) => {
+        const renderCalendarioItem = ({ item, index }) => {
             return (
-                    <ListItem
-                        key={index}
-                        title={item.nombre}
-                        subtitle={item.descripcion}
-                        hideChevron={true}
-                        onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
-                        leftAvatar={{ source: require('./imagenes/40Años.png')}}
-                    />
+                <ListItem
+                    key={index}
+                    title={item.nombre}
+                    subtitle={item.descripcion}
+                    hideChevron={true}
+                    onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
+                    leftAvatar={{ source: require('./imagenes/40Años.png') }}
+                />
             );
         }
 
         return (
-            <FlatList 
+            <FlatList
                 data={this.state.excursiones}
                 renderItem={renderCalendarioItem}
                 keyExtractor={item => item.id.toString()}
-                />
+            />
         );
     };
 }

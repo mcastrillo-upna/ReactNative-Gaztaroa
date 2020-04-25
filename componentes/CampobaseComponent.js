@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Calendario from './CalendarioComponent';
 import Home from './HomeComponent';
+import Contacto from './ContactoComponent';
+import QuienesSomos from './QuienesSomosComponent';
 import DetalleExcursion from './DetalleExcursionComponent';
 import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -59,16 +61,63 @@ function HomeNavegador() {
   );
 }
 
+function QuienesSomosNavegador() {
+  return (
+    <Stack.Navigator
+      initialRouteName="QuienesSomos"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: '#015afc' },
+        headerTitleStyle: { color: '#fff' },
+      }}
+    >
+      <Stack.Screen
+        name="QuienesSomos"
+        component={QuienesSomos}
+        options={{
+          title: 'Quiénes Somos',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function ContactoNavegador() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Contacto"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: '#015afc' },
+        headerTitleStyle: { color: '#fff' },
+      }}
+    >
+      <Stack.Screen
+        name="Contacto"
+        component={Contacto}
+        options={{
+          title: 'Contacto',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function DrawerNavegador() {
   return (
     <Drawer.Navigator
       drawerStyle={{ backgroundColor: '#c2d3da', }}
       initialRouteName="Home" >
-      <Drawer.Screen name="Home" component={HomeNavegador} />
+      <Drawer.Screen name="Campo base" component={HomeNavegador} />
+      <Drawer.Screen name="Quiénes Somos" component={QuienesSomosNavegador} />
       <Drawer.Screen name="Calendario" component={CalendarioNavegador} />
+      <Drawer.Screen name="Contacto" component={ContactoNavegador} />
     </Drawer.Navigator>
   );
 }
+
 
 class Campobase extends Component {
 
