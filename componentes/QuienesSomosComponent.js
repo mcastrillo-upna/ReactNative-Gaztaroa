@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { Card } from 'react-native-elements';
 import { ACTIVIDADES } from '../comun/actividades';
+import { baseUrl } from '../comun/comun';
 
 function Historia() {
     return (
@@ -31,14 +32,14 @@ function RenderActividades(props) {
     const item = props.item;
 
     const renderActividadItem = ({ item, index }) => {
+        console.log(item)
         return (
             <ListItem
                 key={index}
                 title={item.nombre}
                 subtitle={item.descripcion}
                 hideChevron={true}
-                // onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
-                leftAvatar={{ source: require('./imagenes/40Años.png') }}
+                leftAvatar={{ source: {uri: baseUrl + item.imagen } }}
             />
         );
     }
