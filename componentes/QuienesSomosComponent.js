@@ -3,7 +3,6 @@ import { Text, ScrollView } from 'react-native';
 import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { Card } from 'react-native-elements';
-// import { View } from 'react-native';
 import { ACTIVIDADES } from '../comun/actividades';
 
 function Historia() {
