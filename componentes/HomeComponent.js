@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
-// import { EXCURSIONES } from '../comun/excursiones';
-// import { CABECERAS } from '../comun/cabeceras';
-// import { ACTIVIDADES } from '../comun/actividades';
 import { baseUrl } from '../comun/comun';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 
-const mapStateToProps = state => { 
-    return { 
-        excursiones: state.excursiones,
-        cabeceras: state.cabeceras,
-        actividades: state.actividades,
-    } 
-}
+const mapStateToProps = state => {
+    return {
+      excursiones: state.excursiones,
+      cabeceras: state.cabeceras,
+      actividades: state.actividades
+    }
+  }
 
 function RenderItem(props) {
     
@@ -37,15 +34,6 @@ function RenderItem(props) {
 
 class Home extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       excursiones: EXCURSIONES,
-    //       cabeceras: CABECERAS,
-    //       actividades: ACTIVIDADES
-    //     };
-    // }
-
     render() {
         
         return(
@@ -58,5 +46,4 @@ class Home extends Component {
     }
 }
 
-// export default Home;
 export default connect(mapStateToProps)(Home);

@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, FlatList} from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-// import { EXCURSIONES } from '../comun/excursiones';
-// import { COMENTARIOS } from '../comun/comentarios';
 import { baseUrl } from '../comun/comun';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 
-const mapStateToProps = state => { 
-    return { 
-        excursiones: state.excursiones,
-        comentarios: state.comentarios,
-    } 
-}
+const mapStateToProps = state => {
+    return {
+      excursiones: state.excursiones,
+      comentarios: state.comentarios
+    }
+  }
 
 function RenderExcursion(props) {
 
@@ -72,8 +70,6 @@ class DetalleExcursion extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // excursiones: EXCURSIONES,
-            // comentarios: COMENTARIOS,
             favoritos: []
         };
     }
@@ -99,5 +95,4 @@ class DetalleExcursion extends Component {
     } 
 }
 
-// export default DetalleExcursion;
 export default connect(mapStateToProps)(DetalleExcursion);
