@@ -142,13 +142,34 @@ export const addActividades = (actividades) => ({
     payload: actividades
 });
 
-export const postFavorito = (excursionId) => (dispatch) => { 
-    setTimeout(() => { 
-        dispatch(addFavorito(excursionId)); 
-    }, 2000); 
-}; 
+export const postFavorito = (excursionId)  => (dispatch) => {
+    setTimeout(() => {
+        dispatch(addFavorito(excursionId));
+    }, 2000);
+};
 
-export const addFavorito = (excursionId) => ({ 
-    type: ActionTypes.ADD_FAVORITO, 
-    payload: excursionId 
+export const addFavorito = (excursionId) => ({
+    type: ActionTypes.ADD_FAVORITO,
+    payload: excursionId
+});
+
+
+
+export const postComentario = (excursionId, valoracion, autor, comentario) => (dispatch) => {
+    const newComentario= {
+        excursionId: excursionId,
+        valoracion: valoracion,
+        autor: autor,
+        comentario: comentario,
+    };
+    newComentario.dia = new Date().toISOString();
+    console.log(newComentario);
+    setTimeout(() => {
+        dispatch(addComentario(newComentario));
+    }, 2000);
+};
+ 
+export const addComentario = (comentario) => ({
+    type: ActionTypes.ADD_COMENTARIO,
+    payload: comentario
 });
