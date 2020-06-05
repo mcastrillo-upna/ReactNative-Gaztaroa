@@ -6,10 +6,12 @@ import Contacto from './ContactoComponent';
 import DetalleExcursion from './DetalleExcursionComponent';
 import VistaFavoritos from './VistaFavoritosComponent';
 import PruebaEsfuerzo from './PruebaEsfuerzoComponent';
+import Galeria from './GaleriaComponent';
+import Network from './NetworkComponent';
 import { View, StyleSheet, Image, Text } from 'react-native';
 import { NavigationContainer, DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator,   DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import { Icon } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
@@ -45,7 +47,7 @@ function HomeNavegador({ navigation }) {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
-        headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
       }}
     >
       <Stack.Screen
@@ -68,7 +70,7 @@ function QuienesSomosNavegador({ navigation }) {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
-        headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
       }}
     >
       <Stack.Screen
@@ -91,7 +93,7 @@ function CalendarioNavegador({ navigation }) {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
-        
+
       }}
     >
       <Stack.Screen
@@ -99,7 +101,7 @@ function CalendarioNavegador({ navigation }) {
         component={Calendario}
         options={{
           title: 'Calendario Gaztaroa',
-          headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+          headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
         }}
       />
       <Stack.Screen
@@ -122,7 +124,7 @@ function ContactoNavegador({ navigation }) {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
-        headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
       }}
     >
       <Stack.Screen
@@ -145,7 +147,7 @@ function PruebaEsfuerzoNavegador({ navigation }) {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
-        headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
       }}
     >
       <Stack.Screen
@@ -168,7 +170,7 @@ function VistaFavoritosNavegador({ navigation }) {
         headerTintColor: '#fff',
         headerStyle: { backgroundColor: colorGaztaroaOscuro },
         headerTitleStyle: { color: '#fff' },
-        headerLeft: () => (<Icon name="menu" size={28} color= 'white' onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) }/>),
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
       }}
     >
       <Stack.Screen
@@ -182,15 +184,61 @@ function VistaFavoritosNavegador({ navigation }) {
   );
 }
 
+function GaleriaNavegador({ navigation }) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Galeria"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: colorGaztaroaOscuro },
+        headerTitleStyle: { color: '#fff' },
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
+      }}
+    >
+      <Stack.Screen
+        name="Galeria"
+        component={Galeria}
+        options={{
+          title: 'Galería',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function NetworkNavegador({ navigation }) {
+  return (
+    <Stack.Navigator
+      initialRouteName="network"
+      headerMode="screen"
+      screenOptions={{
+        headerTintColor: '#fff',
+        headerStyle: { backgroundColor: colorGaztaroaOscuro },
+        headerTitleStyle: { color: '#fff' },
+        headerLeft: () => (<Icon name="menu" size={28} color='white' onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())} />),
+      }}
+    >
+      <Stack.Screen
+        name="Network"
+        component={Network}
+        options={{
+          title: 'Estado de la red',
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
       <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
         <View style={styles.drawerHeader}>
-          <View style={{flex:1}}>
-          <Image source={{ uri: "https://firebasestorage.googleapis.com/v0/b/appgaztaroa-8ba7a.appspot.com/o/logo.png?alt=media&token=c5b47238-7485-470f-994c-689941d7b6a8" }} style={styles.drawerImage} />
+          <View style={{ flex: 1 }}>
+            <Image source={{ uri: "https://firebasestorage.googleapis.com/v0/b/appgaztaroa-8ba7a.appspot.com/o/logo.png?alt=media&token=c5b47238-7485-470f-994c-689941d7b6a8" }} style={styles.drawerImage} />
           </View>
-          <View style={{flex: 2}}>
+          <View style={{ flex: 2 }}>
             <Text style={styles.drawerHeaderText}> Gaztaroa</Text>
           </View>
         </View>
@@ -202,87 +250,112 @@ function CustomDrawerContent(props) {
 
 function DrawerNavegador() {
   return (
-      <Drawer.Navigator
-        drawerStyle={{
-          backgroundColor: colorGaztaroaClaro,
-        }}
-        initialRouteName="Home"
-        drawerContent={props => <CustomDrawerContent {...props} />}
-      >
-        <Drawer.Screen name="Campo base" component={HomeNavegador}
-          options={{
-            drawerIcon: ({ tintColor}) => (
-              <Icon
+    <Drawer.Navigator
+      drawerStyle={{
+        backgroundColor: colorGaztaroaClaro,
+      }}
+      initialRouteName="Home"
+      drawerContent={props => <CustomDrawerContent {...props} />}
+    >
+      <Drawer.Screen name="Campo base" component={HomeNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
               name='home'
-              type='font-awesome'            
+              type='font-awesome'
               size={24}
               color={tintColor}
-              />
-            )
-            }}
-        />        
-        <Drawer.Screen name="Quiénes somos" component={QuienesSomosNavegador}
-          options={{
-              drawerIcon: ({ tintColor}) => (
-                <Icon
-                name='info-circle'
-                type='font-awesome'            
-                size={24}
-                color={tintColor}
-                />
-              )
-              }}
-          />          
-        <Drawer.Screen name="Calendario" component={CalendarioNavegador}
-          options={{
-            drawerIcon: ({ tintColor}) => (
-              <Icon
+            />
+          )
+        }}
+      />
+      <Drawer.Screen name="Quiénes somos" component={QuienesSomosNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
+              name='info-circle'
+              type='font-awesome'
+              size={24}
+              color={tintColor}
+            />
+          )
+        }}
+      />
+      <Drawer.Screen name="Calendario" component={CalendarioNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
               name='calendar'
-              type='font-awesome'            
+              type='font-awesome'
               size={24}
               color={tintColor}
-              />
-            )
-            }}
-        />
-        <Drawer.Screen name="Contacto" component={ContactoNavegador}
-          options={{
-            drawerIcon: ({ tintColor}) => (
-              <Icon
+            />
+          )
+        }}
+      />
+      <Drawer.Screen name="Contacto" component={ContactoNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
               name='address-card'
-              type='font-awesome'            
+              type='font-awesome'
               size={22}
               color={tintColor}
-              />
-            )
-            }}
-        />
-        <Drawer.Screen name="Prueba de esfuerzo" component={PruebaEsfuerzoNavegador}
-          options={{
-            drawerIcon: ({ tintColor}) => (
-              <Icon
+            />
+          )
+        }}
+      />
+      <Drawer.Screen name="Prueba de esfuerzo" component={PruebaEsfuerzoNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
               name='heartbeat'
-              type='font-awesome'            
+              type='font-awesome'
               size={22}
               color={tintColor}
-              />
-            )
-            }}
-        />
-        <Drawer.Screen name="Excursiones Favoritas" component={VistaFavoritosNavegador}
-          options={{
-            drawerIcon: ({ tintColor}) => (
-              <Icon
+            />
+          )
+        }}
+      />
+      <Drawer.Screen name="Excursiones Favoritas" component={VistaFavoritosNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
               name='thumbs-up'
-              type='font-awesome'            
+              type='font-awesome'
               size={22}
               color={tintColor}
-              />
-            )
-            }}
-        />
-      </Drawer.Navigator>
-  
+            />
+          )
+        }}
+      />
+      <Drawer.Screen name="Galeria" component={GaleriaNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
+              name='image'
+              type='font-awesome'
+              size={24}
+              color={tintColor}
+            />
+          )
+        }}
+      />
+
+      <Drawer.Screen name="Network" component={NetworkNavegador}
+        options={{
+          drawerIcon: ({ tintColor }) => (
+            <Icon
+              name='wifi'
+              type='font-awesome'
+              size={24}
+              color={tintColor}
+            />
+          )
+        }}
+      />
+    </Drawer.Navigator>
+
   );
 }
 
@@ -296,12 +369,12 @@ class Campobase extends Component {
   }
 
   render() {
- 
+
     return (
       <NavigationContainer>
-        <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}>
+        <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}>
           <DrawerNavegador />
-        </View>      
+        </View>
       </NavigationContainer>
     );
   }
