@@ -1,4 +1,5 @@
 import * as ActionTypes from './ActionTypes';
+import * as firebase from 'firebase';
 
 export const comentarios = (state = {
   errMess: null,
@@ -17,6 +18,7 @@ export const comentarios = (state = {
       comentario.id = state.comentarios.length;
 
       state.comentarios = state.comentarios.concat(comentario);
+      firebase.database().ref('/comentarios').set(state.comentarios);
 
       return { ...state, comentarios: state.comentarios };
 
