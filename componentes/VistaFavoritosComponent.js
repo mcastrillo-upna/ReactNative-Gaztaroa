@@ -59,7 +59,7 @@ class VistaFavoritos extends Component {
                         hideChevron={true}
                         onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
                         onLongPress={() => {this.lanzarAlerta(item)}}
-                        leftAvatar={{ source: { uri: baseUrl + item.imagen } }}
+                        leftAvatar={{ source: { uri: item.imagen } }}
                     />
                 </Swipeout>
             );
