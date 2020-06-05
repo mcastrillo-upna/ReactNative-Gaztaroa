@@ -5,6 +5,13 @@ import { Card } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { IndicadorActividad } from './IndicadorActividadComponent';
 
+
+
+const IOS_CLIENT_ID =
+  "your-ios-client-id";
+const ANDROID_CLIENT_ID =
+  "your-android-client-id";
+
 const mapStateToProps = state => {
     return {
         excursiones: state.excursiones,

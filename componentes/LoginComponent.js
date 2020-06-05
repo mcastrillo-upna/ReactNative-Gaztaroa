@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import * as Google from "expo-google-app-auth";
+
+
+const ANDROID_CLIENT_ID =
+    "925378179803-7eevhkoliua43kvmltagrpub92e6cc2k.apps.googleusercontent.com";
 
 class Login extends Component {
     state = {
@@ -60,10 +65,33 @@ class Login extends Component {
                     //     }
                     // });
                     // console.log(this.state.email)
-                    navigate('Home', {email:this.state.email});
+                    navigate('Home', { email: this.state.email });
                 }
             });
     };
+
+    signInWithGoogle = async () => {
+        try {
+            const result = await Google.logInAsync({
+                // iosClientId: IOS_CLIENT_ID,
+                androidClientId: ANDROID_CLIENT_ID,
+                scopes: ["profile", "email"]
+            });
+
+            if (result.type === "success") {
+                console.log("LoginScreen.js.js 21 | ", result.user.givenName);
+                this.props.navigation.navigate("Home", { email: result.user.email });
+                // return result.accessToken;
+            } else {
+                return { cancelled: true };
+            }
+        } catch (e) {
+            console.log('Error with login', e);
+            return { error: true };
+        }
+    };
+
+
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -89,16 +117,17 @@ class Login extends Component {
                     secureTextEntry
                 />
                 <View style={styles.button}>
-                    <Button 
-                        title="Login" 
-                        onPress={() => this.loginHandler({ navigate })} 
-                        style={styles.button} 
+                    <Button
+                        title="Login"
+                        onPress={() => this.loginHandler({ navigate })}
+                        style={styles.button}
                         disabled={(this.state.email === "" || this.state.password === "")} />
                 </View>
-                <Text style={styles.text}>Don't have an account? 
-                    <Text onPress={() => navigate('Regístrate') }
-                    style={styles.navigateText}> Login </Text>
+                <Text style={styles.text}>Don't have an account?
+                    <Text onPress={() => navigate('Regístrate')}
+                        style={styles.navigateText}> Login </Text>
                 </Text>
+                <Button title="Login with Google" onPress={this.signInWithGoogle} />
             </View>
         )
     }
