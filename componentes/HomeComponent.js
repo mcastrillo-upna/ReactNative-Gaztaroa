@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, ScrollView, View } from 'react-native';
 import { Card } from 'react-native-elements';
-import { baseUrl } from '../comun/comun';
+// import { baseUrl } from  '../comun/comun';
 import { connect } from 'react-redux';
 import { IndicadorActividad } from './IndicadorActividadComponent';
 
@@ -43,14 +43,31 @@ function RenderItem(props) {
         }
     }
 }
-   
+
 
 class Home extends Component {
 
     render() {
+        // console.log(this.props.route.params.email);
+        let email =
+            <Text style={{ flex: 1, justifyContent: 'center', marginLeft: 10 }}>
+                Usuario no logeado
+            </Text>;
+        try {
+            if (typeof this.props.route.params.email != "undefined") {
+                email =
+                    <Text style={{ flex: 1, justifyContent: 'center', marginLeft: 10 }}>
+                        Usuario: {this.props.route.params.email}
+                    </Text>
+            }
+        } catch {
+
+        }
+        
 
         return (
             <ScrollView>
+                {email}
                 <RenderItem
                     item={this.props.cabeceras.cabeceras.filter((cabecera) => cabecera.destacado)[0]}
                     isLoading={this.props.cabeceras.isLoading}
@@ -63,7 +80,7 @@ class Home extends Component {
                     item={this.props.actividades.actividades.filter((actividad) => actividad.destacado)[0]}
                     isLoading={this.props.actividades.isLoading}
                     errMess={this.props.actividades.errMess} />
-                
+
             </ScrollView>
         );
     }
