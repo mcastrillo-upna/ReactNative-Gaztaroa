@@ -4,6 +4,7 @@ import { ListItem } from 'react-native-elements';
 import { baseUrl } from '../comun/comun';
 import { connect } from 'react-redux';
 import { IndicadorActividad } from './IndicadorActividadComponent';
+import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
@@ -18,14 +19,16 @@ class Calendario extends Component {
 
         const renderCalendarioItem = ({ item, index }) => {
             return (
-                <ListItem
-                    key={index}
-                    title={item.nombre}
-                    subtitle={item.descripcion}
-                    hideChevron={true}
-                    onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
-                    leftAvatar={{ source: { uri: baseUrl + item.imagen } }}
-                />
+                <Animatable.View animation="bounceIn" duration={2000} delay={500}>
+                    <ListItem
+                        key={index}
+                        title={item.nombre}
+                        subtitle={item.descripcion}
+                        hideChevron={true}
+                        onPress={() => navigate('DetalleExcursion', { excursionId: item.id })}
+                        leftAvatar={{ source: { uri: baseUrl + item.imagen } }}
+                    />
+                </Animatable.View>
             );
         }
 
@@ -41,12 +44,12 @@ class Calendario extends Component {
             );
         } else {
             return (
-
                 <FlatList
                     data={this.props.excursiones.excursiones}
                     renderItem={renderCalendarioItem}
                     keyExtractor={item => item.id.toString()}
                 />
+
             );
         }
     };
